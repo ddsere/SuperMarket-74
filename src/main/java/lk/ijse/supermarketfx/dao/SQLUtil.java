@@ -1,4 +1,4 @@
-package lk.ijse.supermarketfx.util;
+package lk.ijse.supermarketfx.dao;
 
 import lk.ijse.supermarketfx.db.DBConnection;
 
@@ -18,7 +18,7 @@ import java.sql.SQLException;
  * --------------------------------------------
  **/
 // This class contains utility methods for executing CRUD operations (Create, Read, Update, Delete) with the database.
-public class CrudUtil {
+public class SQLUtil {
 
     // A generic method to execute SQL queries, with a flexible return type `T`.
     // It accepts an SQL statement and a variable number of parameters (obj) to insert into SQL query.

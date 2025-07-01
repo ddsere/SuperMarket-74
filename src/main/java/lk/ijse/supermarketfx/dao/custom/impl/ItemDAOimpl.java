@@ -1,18 +1,16 @@
 package lk.ijse.supermarketfx.dao.custom.impl;
 
-import lk.ijse.supermarketfx.dao.CustomerDAO;
-import lk.ijse.supermarketfx.dao.ItemDAO;
-import lk.ijse.supermarketfx.dao.custom.CrudDAO;
-import lk.ijse.supermarketfx.entity.Customer;
+import lk.ijse.supermarketfx.dao.custom.ItemDAO;
 import lk.ijse.supermarketfx.entity.Item;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class ItemDAOimpl implements ItemDAO {
 
     @Override
-    public List<Customer> getAll() {
+    public List<Item> getAll() {
         return List.of();
     }
 
@@ -22,12 +20,12 @@ public class ItemDAOimpl implements ItemDAO {
     }
 
     @Override
-    public boolean save(Customer customer) {
+    public boolean save(Item item) {
         return false;
     }
 
     @Override
-    public boolean update(Customer customer) {
+    public boolean update(Item item) {
         return false;
     }
 
@@ -42,7 +40,7 @@ public class ItemDAOimpl implements ItemDAO {
     }
 
     @Override
-    public Customer findById(String id) {
-        return null;
+    public Optional<Item> findById(String id) {
+        return Optional.empty();
     }
 }

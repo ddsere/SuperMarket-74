@@ -1,13 +1,13 @@
 package lk.ijse.supermarketfx.dao.custom.impl;
 
-import lk.ijse.supermarketfx.dao.CustomerDAO;
+import lk.ijse.supermarketfx.dao.custom.CustomerDAO;
 import lk.ijse.supermarketfx.entity.Customer;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class CustomerDAOimpl implements CustomerDAO {
-
     @Override
     public List<Customer> getAll() {
         return List.of();
@@ -39,7 +39,7 @@ public class CustomerDAOimpl implements CustomerDAO {
     }
 
     @Override
-    public Customer findById(String id) {
-        return null;
+    public Optional<Customer> findById(String id) {
+        return Optional.empty();
     }
 }

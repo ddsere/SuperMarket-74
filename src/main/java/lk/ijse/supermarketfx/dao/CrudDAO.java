@@ -1,7 +1,8 @@
-package lk.ijse.supermarketfx.dao.custom;
+package lk.ijse.supermarketfx.dao;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public interface CrudDAO <T> {
     List<T> getAll();
@@ -12,5 +13,5 @@ public interface CrudDAO <T> {
     boolean delete(String id);
 
     ArrayList<String> getAllIds();
-    T findById(String id);
+    Optional <T> findById(String id);
 }

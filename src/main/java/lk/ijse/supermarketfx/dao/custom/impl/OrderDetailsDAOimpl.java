@@ -1,15 +1,16 @@
 package lk.ijse.supermarketfx.dao.custom.impl;
 
-import lk.ijse.supermarketfx.dao.custom.OrderDAO;
-import lk.ijse.supermarketfx.entity.Order;
+import lk.ijse.supermarketfx.dao.custom.OrderDetailsDAO;
+import lk.ijse.supermarketfx.entity.OrderDetails;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class OrderDAOimpl implements OrderDAO {
+public class OrderDetailsDAOimpl implements OrderDetailsDAO {
+
     @Override
-    public List<Order> getAll() {
+    public List<OrderDetails> getAll() {
         return List.of();
     }
 
@@ -19,12 +20,12 @@ public class OrderDAOimpl implements OrderDAO {
     }
 
     @Override
-    public boolean save(Order order) {
+    public boolean save(OrderDetails orderDetails) {
         return false;
     }
 
     @Override
-    public boolean update(Order order) {
+    public boolean update(OrderDetails orderDetails) {
         return false;
     }
 
@@ -39,7 +40,7 @@ public class OrderDAOimpl implements OrderDAO {
     }
 
     @Override
-    public Optional <Order> findById(String id) {
+    public Optional<OrderDetails> findById(String id) {
         return null;
     }
 }

@@ -2,7 +2,7 @@ package lk.ijse.supermarketfx.model;
 
 import lk.ijse.supermarketfx.dto.ItemDTO;
 import lk.ijse.supermarketfx.dto.OrderDetailsDTO;
-import lk.ijse.supermarketfx.util.CrudUtil;
+import lk.ijse.supermarketfx.dao.SQLUtil;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -21,7 +21,7 @@ import java.util.ArrayList;
 
 public class ItemModel {
     public ArrayList<String> getAllItemIds() throws SQLException {
-        ResultSet rst = CrudUtil.execute(
+        ResultSet rst = SQLUtil.execute(
                 "select item_id from item"
         );
         ArrayList<String> list = new ArrayList<>();
@@ -33,7 +33,7 @@ public class ItemModel {
     }
 
     public ItemDTO findById(String itemId) throws SQLException {
-        ResultSet rst = CrudUtil.execute(
+        ResultSet rst = SQLUtil.execute(
                 "select * from item where item_id=?",
                 itemId
         );
@@ -50,7 +50,7 @@ public class ItemModel {
     }
 
     public boolean reduceQty(OrderDetailsDTO orderDetailsDTO) throws SQLException {
-        return CrudUtil.execute(
+        return SQLUtil.execute(
                 "update item set quantity = quantity-? where item_id=?",
                 orderDetailsDTO.getQty(),
                 orderDetailsDTO.getItemId()

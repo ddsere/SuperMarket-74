@@ -2,7 +2,7 @@ package lk.ijse.supermarketfx.model;
 
 import lk.ijse.supermarketfx.db.DBConnection;
 import lk.ijse.supermarketfx.dto.OrderDTO;
-import lk.ijse.supermarketfx.util.CrudUtil;
+import lk.ijse.supermarketfx.dao.SQLUtil;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -24,7 +24,7 @@ public class OrderModel {
     private final OrderDetailsModel orderDetailsModel = new OrderDetailsModel();
 
     public String getNextOrderId() throws SQLException {
-        ResultSet resultSet = CrudUtil.execute(
+        ResultSet resultSet = SQLUtil.execute(
                 "select order_id from orders order by order_id desc limit 1"
         );
 
@@ -44,7 +44,7 @@ public class OrderModel {
         Connection connection = DBConnection.getInstance().getConnection();
         try {
             connection.setAutoCommit(false);
-            boolean isSave = CrudUtil.execute(
+            boolean isSave = SQLUtil.execute(
                     "insert into orders values (?,?,?)",
                     orderDTO.getOrderId(),
                     orderDTO.getCustomerId(),

@@ -1,11 +1,8 @@
 package lk.ijse.supermarketfx.model;
 
-import lk.ijse.supermarketfx.db.DBConnection;
 import lk.ijse.supermarketfx.dto.CustomerDTO;
-import lk.ijse.supermarketfx.util.CrudUtil;
+import lk.ijse.supermarketfx.dao.SQLUtil;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -26,7 +23,7 @@ public class CustomerModel {
 //        Connection connection = DBConnection.getInstance().getConnection();
 //        PreparedStatement pst = connection.prepareStatement("select * from customer");
 //        ResultSet resultSet = pst.executeQuery();
-        ResultSet resultSet = CrudUtil.execute("select * from customer");
+        ResultSet resultSet = SQLUtil.execute("select * from customer");
 
         ArrayList<CustomerDTO> list = new ArrayList<>();
 
@@ -50,7 +47,7 @@ public class CustomerModel {
 //        PreparedStatement pst = connection.prepareStatement(sql);
 
 //        ResultSet resultSet = pst.executeQuery();
-        ResultSet resultSet = CrudUtil.execute("select customer_id from customer order by customer_id desc limit 1");
+        ResultSet resultSet = SQLUtil.execute("select customer_id from customer order by customer_id desc limit 1");
         char tableChar = 'C'; // Use any character Ex:- customer table for C, item table for I
         if (resultSet.next()) {
             String lastId = resultSet.getString(1); // "C004"
@@ -81,7 +78,7 @@ public class CustomerModel {
 //        int i = pst.executeUpdate();
 //        boolean isSave = i > 0;
 //        return isSave;
-        return CrudUtil.execute(
+        return SQLUtil.execute(
                 "insert into customer values (?,?,?,?,?)",
                 customerDTO.getCustomerId(),
                 customerDTO.getName(),
@@ -92,7 +89,7 @@ public class CustomerModel {
     }
 
     public boolean updateCustomer(CustomerDTO customerDTO) throws SQLException {
-        return CrudUtil.execute(
+        return SQLUtil.execute(
                 "update customer set name=?, nic=?, email=?, phone=? where customer_id=?",
                 customerDTO.getName(),
                 customerDTO.getNic(),
@@ -103,14 +100,14 @@ public class CustomerModel {
     }
 
     public boolean deleteCustomer(String customerId) throws SQLException {
-        return CrudUtil.execute(
+        return SQLUtil.execute(
                 "delete from customer where customer_id=?",
                 customerId
         );
     }
 
     public ArrayList<String> getAllCustomerIds() throws SQLException {
-        ResultSet rst = CrudUtil.execute(
+        ResultSet rst = SQLUtil.execute(
                 "select customer_id from customer"
         );
         ArrayList<String> list = new ArrayList<>();
@@ -122,7 +119,7 @@ public class CustomerModel {
     }
 
     public String findNameById(String customerId) throws SQLException {
-        ResultSet rst = CrudUtil.execute(
+        ResultSet rst = SQLUtil.execute(
                 "select name from customer where customer_id=?",
                 customerId
         );
